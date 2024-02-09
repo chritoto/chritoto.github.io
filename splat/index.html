@@ -7,11 +7,15 @@
     <script src="https://quadjr.github.io/aframe-gaussian-splatting/index.js"></script>
   </head>
   <body>
-    <a-scene renderer="antialias: false" stats>
+    <a-scene renderer="antialias: false" reflection="directionalLight:a-light#dirlight;"stats>
+      <a-assets>
+        <img id="sky" src="Skies/sky1.png">
+      </a-assets>
+      <a-sky src="#sky"></a-sky>
       <a-entity position="0 1 -2.0" animation="property: rotation; to: 0 360 0; dur: 10000; easing: linear; loop: true">
       </a-entity>
       <!--<a-entity gaussian_splatting="src: https://huggingface.co/cakewalk/splat-data/resolve/main/train.splat;" rotation="0 0 0" position="0 1.5 -2"></a-entity>-->
-      <a-entity gaussian_splatting="src: splats/gs_Glace-edit.ply;" rotation="180 0 0" position="0 1.1 -2"></a-entity>
+      <a-entity gaussian_splatting="src: splats/gs_Glace-edit.ply;" rotation="180 0 0" position="0 0 -2" scale="10 10 10"></a-entity>
     </a-scene>
   </body>
 </html>

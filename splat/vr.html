@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <!--<script src="https://quadjr.github.io/aframe-gaussian-splatting/index.js"></script>-->
+    <!--<script src="https://electrum-bowie.github.io/index.js"></script>-->
+    <script src="https://electrum-bowie.github.io/index.js"></script>
+    <script src="https://electrum-bowie.github.io/input.js"></script>
+    <script src="https://electrum-bowie.github.io/simple-fly.js"></script>
+    <script src="https://electrum-bowie.github.io/dist/jszip.js"></script>
+    <style>
+        /* CSS for button */
+        #fileButton {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            padding: 20px; /* 3 times bigger */
+        }
+        /* CSS for slider container */
+        .slider-container {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%; /* Adjust the width as needed */
+            z-index: 1;
+        }
+
+        /* CSS for the slider input */
+        #slider {
+            width: 100%;
+        }
+
+        /* CSS for the displayed value */
+        #slider-value {
+            text-align: center;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block;
+            width: 60px; /* Adjust the width as needed */
+            margin: 0 auto;
+        }
+
+        #logMessage {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            background: rgba(255, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+  </head>
+  <body>
+    <a-scene renderer="antialias: false" stats>
+        <a-entity oculus-touch-controls="hand: right"></a-entity>
+        <a-entity oculus-touch-controls="hand: left"></a-entity>
+
+        <!-- Add a container to hold the dynamically created entity -->
+        <div id="entityContainer"></div>
+
+        <a-entity oculus-touch-controls="hand: right" simple-fly="speed: -0.025"></a-entity>
+      <a-entity position="0 1.6 -2.0" animation="property: rotation; to: 0 360 0; dur: 10000; easing: linear; loop: true">
+      </a-entity>
+      <!--<a-entity gaussian_splatting="src: https://huggingface.co/cakewalk/splat-data/resolve/main/train.splat;" rotation="0 0 0" position="0 1.5 -2"></a-entity>-->
+      <a-entity gaussian_splatting="src: splats/gs_Glace-edit.splat;" rotation="0 0 0" position="0 0 -2"></a-entity>
+    </a-scene>
+  </body>
+</html>

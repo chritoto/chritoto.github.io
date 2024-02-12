@@ -30,6 +30,30 @@
             position.y = position.y + 0.1;
             console.log(position)
           }
+          if (eventData.key.toUpperCase() == "W")
+          {
+            position = document.getElementById(gaussian).getAttribute('position');
+            position.z = position.z + 0.1;
+            console.log(position)
+          }
+          if (eventData.key.toUpperCase() == "S")
+          {
+            position = document.getElementById(gaussian).getAttribute('position');
+            position.z = position.z - 0.1;
+            console.log(position)
+          }
+          if (eventData.key.toUpperCase() == "D")
+          {
+            position = document.getElementById(gaussian).getAttribute('position');
+            position.x = position.x - 0.1;
+            console.log(position)
+          }
+          if (eventData.key.toUpperCase() == "A")
+          {
+            position = document.getElementById(gaussian).getAttribute('position');
+            position.x = position.x + 0.1;
+            console.log(position)
+          }
           if (eventData.key.toUpperCase() == "N")
           {
             scale = document.getElementById(gaussian).getAttribute('scale');
@@ -46,6 +70,7 @@
             scale.z = scale.z + 0.1;
             console.log(scale)
           }
+
           if (eventData.key.toUpperCase() == "1")
           {2
             document.getElementById('master').setAttribute('scene', '1');
@@ -92,11 +117,12 @@
         <img id="sky2" src="sky2_mod.png">
       </a-assets>
       <a-sky id="sky" src="#sky1"></a-sky>
+      <a-entity camera="active: true" look-controls position="0 1.6 0" ></a-entity>
       <a-entity position="0 1 -2.0" animation="property: rotation; to: 0 360 0; dur: 10000; easing: linear; loop: true">
       </a-entity>
       <!--<a-entity gaussian_splatting="src: https://huggingface.co/cakewalk/splat-data/resolve/main/train.splat;" rotation="0 0 0" position="0 1.5 -2"></a-entity>-->
-      <a-entity id="G1" gaussian_splatting="src: G1.ply;" rotation="170 0 0" position="0 -1.3 -2" scale="1 1 1"></a-entity>
-      <a-entity id="G2" gaussian_splatting="src: G2_mod.ply;" rotation="0 0 0" position="0 -1 -2" scale="10 10 10" visible="false"></a-entity>
+      <a-entity id="G1" gaussian_splatting="src: G1_mod.ply;" rotation="170 0 0" position="0.9 -1.3 1.1" scale="10 10 10"></a-entity>
+      <a-entity id="G2" gaussian_splatting="src: G2_mod.ply;" rotation="0 0 0" position="-1.1 -1 -2.2" scale="10 10 10" visible="false"></a-entity>
     </a-scene>
     
   </body>

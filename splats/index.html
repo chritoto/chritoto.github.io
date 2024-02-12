@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="aframe_min.js"></script>
+    <!--<script src="https://quadjr.github.io/aframe-gaussian-splatting/index.js"></script>-->
+    <!--<script src="https://electrum-bowie.github.io/index.js"></script>-->
+    <script src="gaussian.js"></script>
+  </head>
+  <body>
+    <script type="text/javascript">
+      console.log("L: move down, O: move up");
+      console.log("N: scale down, M: scale up");
+      document.addEventListener( "keydown", 
+        function(eventData) 
+        { 
+          var gaussian = "G1";
+          if (document.getElementById('G2').getAttribute('visible') == true) {
+            gaussian = "G2"
+          }
+          console.log(eventData.key.toUpperCase());
+          if (eventData.key.toUpperCase() == "L")
+          {
+            position = document.getElementById(gaussian).getAttribute('position');
+            position.y = position.y - 0.1;
+            console.log(position)
+          }
+          if (eventData.key.toUpperCase() == "O")
+          {
+            position = document.getElementById(gaussian).getAttribute('position');
+            position.y = position.y + 0.1;
+            console.log(position)
+          }
+          if (eventData.key.toUpperCase() == "N")
+          {
+            scale = document.getElementById(gaussian).getAttribute('scale');
+            scale.x = scale.x - 0.1;
+            scale.y = scale.y - 0.1;
+            scale.z = scale.z - 0.1;
+            console.log(scale)
+          }
+          if (eventData.key.toUpperCase() == "M")
+          {
+            scale = document.getElementById(gaussian).getAttribute('scale');
+            scale.x = scale.x + 0.1;
+            scale.y = scale.y + 0.1;
+            scale.z = scale.z + 0.1;
+            console.log(scale)
+          }
+          if (eventData.key.toUpperCase() == "1")
+          {2
+            document.getElementById('master').setAttribute('scene', '1');
+            document.getElementById('G2').setAttribute('visible', 'false');
+            document.getElementById('G1').setAttribute('visible', 'true');
+            document.getElementById('sky').setAttribute('src', '#sky1');
+          }
+          if (eventData.key.toUpperCase() == "2")
+          {
+            document.getElementById('master').setAttribute('scene', '2');
+            document.getElementById('G1').setAttribute('visible', 'false');
+            document.getElementById('G2').setAttribute('visible', 'true');
+            document.getElementById('sky').setAttribute('src', '#sky2');
+          }
+        }
+		  );
+
+      AFRAME.registerComponent('button-logging',{
+        init: function () {
+          this.el.addEventListener('abuttondown', this.changeScene);
+        },
+        changeScene: function (evt) {
+          scene = document.getElementById('master').getAttribute('scene');
+          if (scene == "1") {
+            document.getElementById('master').setAttribute('scene', '2');
+            document.getElementById('G1').setAttribute('visible', 'false');
+            document.getElementById('G2').setAttribute('visible', 'true');
+            document.getElementById('sky').setAttribute('src', '#sky2');
+          } 
+          if (scene == "2") {
+            document.getElementById('master').setAttribute('scene', '1');
+            document.getElementById('G2').setAttribute('visible', 'false');
+            document.getElementById('G1').setAttribute('visible', 'true');
+            document.getElementById('sky').setAttribute('src', '#sky1');
+          }
+        }
+      });
+      </script>
+    <a-scene id="master" renderer="antialias: false" scene="1" reflection="directionalLight:a-light#dirlight;"stats>
+      <a-entity oculus-touch-controls="hand: left" button-logging></a-entity>
+      <a-entity oculus-touch-controls="hand: right" button-logging></a-entity>
+      <a-assets>
+        <img id="sky1" src="sky1_mod.png">
+        <img id="sky2" src="sky2_mod.png">
+      </a-assets>
+      <a-sky id="sky" src="#sky1"></a-sky>
+      <a-entity position="0 1 -2.0" animation="property: rotation; to: 0 360 0; dur: 10000; easing: linear; loop: true">
+      </a-entity>
+      <!--<a-entity gaussian_splatting="src: https://huggingface.co/cakewalk/splat-data/resolve/main/train.splat;" rotation="0 0 0" position="0 1.5 -2"></a-entity>-->
+      <a-entity id="G1" gaussian_splatting="src: G1.ply;" rotation="170 0 0" position="0 -1.3 -2" scale="1 1 1"></a-entity>
+      <a-entity id="G2" gaussian_splatting="src: G2_mod.ply;" rotation="0 0 0" position="0 -1 -2" scale="10 10 10" visible="false"></a-entity>
+    </a-scene>
+    
+  </body>
+</html>

@@ -118,10 +118,12 @@
       </a-assets>
       <a-sky id="sky" src="#sky1"></a-sky>
       <a-entity camera="active: true" look-controls position="0 1.6 0" ></a-entity>
-      <a-entity position="0 1 -2.0" animation="property: rotation; to: 0 360 0; dur: 10000; easing: linear; loop: true">
+      <a-entity position="0 0 0" >
+        <!-- <a-sphere position="0 0 0" radius="41" color="#EF2D5E"></a-sphere>
+        <a-box color="tomato" depth="2" height="0.1" width="10"></a-box> -->
       </a-entity>
       <!--<a-entity gaussian_splatting="src: https://huggingface.co/cakewalk/splat-data/resolve/main/train.splat;" rotation="0 0 0" position="0 1.5 -2"></a-entity>-->
-      <a-entity id="G1" gaussian_splatting="src: G1_mod.ply;" rotation="170 0 0" position="0.9 -1.3 1.1" scale="10 10 10"></a-entity>
+      <a-entity id="G1" gaussian_splatting="src: topo_mod.ply;" rotation="0 0 0" position="-3.4 2.3 1.8" scale="48 48 48"></a-entity>
       <a-entity id="G2" gaussian_splatting="src: G2_mod.ply;" rotation="0 0 0" position="-1.1 -1 -2.2" scale="10 10 10" visible="false"></a-entity>
     </a-scene>
     

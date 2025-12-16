@@ -41,7 +41,7 @@ a:hover {
 
 strong,
 b {
-	color: #666f77;
+	color: inherit;
 	font-weight: 500;
 }
 
@@ -903,69 +903,136 @@ input[type="button"]:disabled,
 
 /* Header */
 
-#skel-layers-wrapper {
-	padding-top: 3em;
+/* Sidebar */
+
+#sidebar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 300px;
+	height: 100vh;
+	background: #192024;
+	color: #ffffff;
+	padding: 2em;
+	text-align: center;
+	overflow-y: auto;
+	z-index: 10001;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
+#sidebar .profile-image {
+	width: 150px;
+	height: 150px;
+	margin: 0 auto 1.5em auto;
+	border-radius: 50%;
+	overflow: hidden;
+	border: 3px solid #ffffff;
+}
+
+#sidebar .profile-image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+#sidebar .name {
+	font-size: 1.75em;
+	font-weight: 600;
+	margin-bottom: 0.5em;
+	color: #ffffff;
+	line-height: 1.2;
+}
+
+#sidebar .title {
+	font-size: 1.1em;
+	color: #bbbbbb;
+	margin-bottom: 1.5em;
+	line-height: 1.4;
+}
+
+#sidebar .social-links {
+	font-size: 2em;
+	margin-bottom: 1em;
+}
+
+#sidebar .social-links a {
+	color: #ffffff;
+	margin: 0 0.25em;
+	text-decoration: none;
+	transition: color 0.2s;
+}
+
+#sidebar .social-links a:hover {
+	color: #629DD1;
+}
+
+#sidebar .contact-info {
+	font-size: 0.9em;
+	color: #bbbbbb;
+}
+
+#sidebar .contact-info i {
+	margin-right: 0.5em;
+}
+
+/* Main Content Wrapper */
+
+#main-content {
+	margin-left: 300px;
+	width: calc(100% - 300px);
+}
+
+#main-content .container {
+	width: 90%;
+	max-width: 1400px;
+	min-width: 0;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Header in Main Content */
+
 #header {
-	background: #fff;
-	color: #555f66;
+	background: #192024;
+	color: #ffffff;
 	cursor: default;
 	height: 3em;
-	left: 0;
 	line-height: 3em;
-	position: fixed;
+	position: -webkit-sticky;
+	position: sticky;
 	top: 0;
 	width: 100%;
 	z-index: 10000;
 	box-shadow: 0 0 0.1em 0 rgba(0, 0, 0, 0.25);
-}
-
-#header h1 {
-	color: #666f77;
-	font-weight: 500;
-	height: inherit;
-	left: 1.25em;
-	line-height: inherit;
-	margin: 0;
-	padding: 0;
-	position: absolute;
-	top: 0;
-}
-
-#header h1 a {
-	font-size: 1.25em;
+	text-align: center;
 }
 
 #header nav {
 	height: inherit;
 	line-height: inherit;
-	position: absolute;
-	right: 1.25em;
-	top: 0;
-	vertical-align: middle;
+	position: relative;
+	width: 100%;
 }
 
 #header nav>ul {
 	list-style: none;
 	margin: 0;
-	padding-left: 0;
+	padding: 0;
+	text-align: center;
 }
 
 #header nav>ul>li {
 	border-radius: 6px;
 	display: inline-block;
-	margin-left: 2em;
-	padding-left: 0;
+	margin: 0 1em;
+	padding: 0;
 }
 
 #header nav>ul>li a {
-	-moz-transition: color 0.2s ease-in-out;
-	-webkit-transition: color 0.2s ease-in-out;
-	-o-transition: color 0.2s ease-in-out;
-	-ms-transition: color 0.2s ease-in-out;
 	transition: color 0.2s ease-in-out;
-	color: #555f66;
+	color: #ffffff;
 	display: inline-block;
 	text-decoration: none;
 }
@@ -974,88 +1041,19 @@ input[type="button"]:disabled,
 	color: #629DD1;
 }
 
-#header nav>ul>li:first-child {
-	margin-left: 0;
-}
+/* Mobile Responsiveness for Sidebar */
+@media screen and (max-width: 980px) {
+	#sidebar {
+		position: relative;
+		width: 100%;
+		height: auto;
+		padding: 3em 2em;
+	}
 
-#header nav>ul>li .button {
-	height: 2.25em;
-	line-height: 2.25em;
-	margin-bottom: 0;
-	padding: 0 1em;
-	position: relative;
-	top: -0.075em;
-	vertical-align: middle;
-}
-
-#header .container {
-	position: relative;
-}
-
-#header .container h1 {
-	left: 0;
-}
-
-#header .container nav {
-	right: 0;
-}
-
-/* Banner */
-
-#banner {
-	background-color: #b1b1b1;
-	background-image: url("../images/banner.jpg");
-	background-size: cover;
-	background-position: center center;
-	background-repeat: no-repeat;
-	color: #767676;
-	padding: 2em 0;
-	text-align: center;
-	position: relative;
-}
-
-#banner:before {
-	content: '';
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(102, 107, 120, 0.25);
-}
-
-#banner .inner {
-	position: relative;
-	z-index: 1;
-}
-
-#banner .inner :last-child {
-	margin-bottom: 0;
-}
-
-#banner h2,
-#banner h3,
-#banner h4,
-#banner h5,
-#banner h6 {
-	color: #ffffff;
-}
-
-#banner .button.alt {
-	box-shadow: inset 0 0 0 1px rgba(144, 144, 144, 0.75);
-	color: #ffffff !important;
-}
-
-#banner .button.alt:hover {
-	background-color: rgba(144, 144, 144, 0.275);
-}
-
-#banner .button.alt:active {
-	background-color: rgba(144, 144, 144, 0.4);
-}
-
-#banner .button.alt.icon:before {
-	color: #c1c1c1;
+	#main-content {
+		margin-left: 0;
+		width: 100%;
+	}
 }
 
 #banner .button {

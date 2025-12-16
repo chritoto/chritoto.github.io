@@ -11,7 +11,7 @@
 /* Basic */
 
 body {
-	background: #fff;
+	background: #192024;
 }
 
 .image.fit img {
@@ -982,6 +982,8 @@ input[type="button"]:disabled,
 #main-content {
 	margin-left: 300px;
 	width: calc(100% - 300px);
+	background: #fff;
+	min-height: 100vh;
 }
 
 #main-content .container {

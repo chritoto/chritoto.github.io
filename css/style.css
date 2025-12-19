@@ -10,6 +10,11 @@
 
 /* Basic */
 
+html {
+	scroll-behavior: smooth;
+	scroll-padding-top: 3em;
+}
+
 body {
 	background: #192024;
 }
